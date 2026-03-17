@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/jpeg" href="favicon/favicon.ico">
+<link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
+
+<title>Erindale Chicken & Seafood</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --orange: #E8621A;
+    --gold: #F5A623;
+    --gold-light: #FFC84A;
+    --white: #FAFAF7;
+    --grey: #161616;
+    --grey-mid: #222;
+    --grey-light: #777;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--black); color: var(--white); font-size: 16px; line-height: 1.6; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,10,0.94); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(245,166,35,0.12);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-logo img { width: 42px; height: 42px; border-radius: 8px; object-fit: cover; }
+  .nav-brand { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-brand .b1 { font-family: 'Blacksword', cursive; font-size: 22px; color: var(--white); line-height: 1; }
+  .nav-brand .b2 { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); font-weight: 700; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--white); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; opacity: 0.7; transition: opacity 0.2s, color 0.2s; }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+  .nav-cta { background: var(--orange) !important; color: var(--white) !important; opacity: 1 !important; padding: 8px 20px; border-radius: 6px; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--black) !important; }
+
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 7rem 2rem 5rem; position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 55%, rgba(232,98,26,0.13) 0%, rgba(245,166,35,0.05) 45%, transparent 70%);
+    pointer-events: none;
+  }
+  @font-face {
+    font-family: 'Blacksword';
+    src: url('Fonts/Blacksword.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .hero-logo { width: 150px; height: 150px; border-radius: 18px; object-fit: cover; margin-bottom: 1.5rem; border: 2px solid rgba(245,166,35,0.25); position: relative; }
+  .hero-name { font-family: 'Blacksword', cursive; font-size: clamp(3.5rem, 9vw, 6.5rem); color: var(--white); line-height: 1; margin-bottom: 0.4rem; position: relative; }
+  .hero-tagline { font-size: clamp(0.7rem, 1.8vw, 0.95rem); letter-spacing: 4px; text-transform: uppercase; font-weight: 700; color: var(--orange); margin-bottom: 1.75rem; position: relative; }
+  .hero-divider { width: 50px; height: 2px; background: linear-gradient(90deg, var(--orange), var(--gold)); border-radius: 2px; margin: 0 auto 1.75rem; position: relative; }
+  .hero-rating { display: flex; align-items: center; gap: 6px; font-size: 14px; color: rgba(250,250,247,0.6); margin-bottom: 1.75rem; position: relative; }
+  .stars { color: var(--gold); }
+  .hero-desc { font-size: 17px; color: rgba(250,250,247,0.55); max-width: 400px; line-height: 1.75; margin-bottom: 2.5rem; font-weight: 300; position: relative; }
+  .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+  .btn-primary { background: var(--orange); color: var(--white); padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px; transition: background 0.2s, transform 0.15s; display: inline-block; }
+  .btn-primary:hover { background: var(--gold); color: var(--black); transform: translateY(-1px); }
+  .btn-secondary { background: transparent; color: var(--white); padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 15px; border: 1px solid rgba(245,166,35,0.35); transition: all 0.2s; display: inline-block; }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+
+  .info-bar { background: var(--grey); border-top: 1px solid rgba(245,166,35,0.1); border-bottom: 1px solid rgba(245,166,35,0.1); padding: 1.25rem 2rem; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+  .info-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(250,250,247,0.7); }
+  .info-icon { width: 32px; height: 32px; border-radius: 50%; background: rgba(232,98,26,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .info-icon svg { width: 15px; height: 15px; fill: var(--orange); }
+  .info-stack { display: flex; flex-direction: column; line-height: 1.3; }
+  .info-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey-light); margin-bottom: 2px; }
+
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 0.6rem; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: 2px; color: var(--white); margin-bottom: 0.75rem; }
+  .section-desc { font-size: 15px; color: rgba(250,250,247,0.45); max-width: 460px; line-height: 1.7; font-weight: 300; }
+
+  #menu { background: var(--black); }
+  .menu-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1.5rem; }
+  .menu-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .tab-btn { background: transparent; border: 1px solid rgba(245,166,35,0.2); color: rgba(250,250,247,0.55); padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; letter-spacing: 0.5px; }
+  .tab-btn:hover, .tab-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+  .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1rem; }
+  .menu-category { display: none; }
+  .menu-category.active { display: contents; }
+  .menu-card { background: var(--grey); border: 1px solid rgba(245,166,35,0.08); border-radius: 12px; padding: 1.1rem 1.35rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; transition: border-color 0.2s, transform 0.2s; }
+  .menu-card:hover { border-color: rgba(232,98,26,0.35); transform: translateY(-2px); }
+  .menu-card-info { flex: 1; }
+  .menu-card-name { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 3px; line-height: 1.3; }
+  .menu-card-desc { font-size: 12.5px; color: rgba(250,250,247,0.4); line-height: 1.5; font-weight: 300; }
+  .menu-card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; padding-top: 1px; flex-shrink: 0; }
+  .menu-card-price { font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 1px; color: var(--gold); white-space: nowrap; }
+  .popular-badge { background: rgba(232,98,26,0.15); color: var(--orange); font-size: 10px; font-weight: 600; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 100px; border: 1px solid rgba(232,98,26,0.25); white-space: nowrap; }
+
+  .order-section { background: var(--grey); border-top: 1px solid rgba(245,166,35,0.1); border-bottom: 1px solid rgba(245,166,35,0.1); text-align: center; padding: 5rem 2rem; }
+  .order-section .section-desc { margin: 0 auto 2.5rem; }
+  .order-options { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .order-card { background: var(--black); border: 1px solid rgba(245,166,35,0.12); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; min-width: 175px; text-decoration: none; color: var(--white); transition: border-color 0.2s, transform 0.2s; display: block; }
+  .order-card:hover { border-color: var(--orange); transform: translateY(-2px); }
+  .order-card-icon { font-size: 26px; margin-bottom: 0.5rem; display: block; }
+  .order-card-label { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 4px; }
+  .order-card-sub { font-size: 12px; color: var(--grey-light); }
+  .coming-soon-badge { display: inline-block; background: rgba(232,98,26,0.12); color: var(--orange); font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; border: 1px solid rgba(232,98,26,0.25); margin-top: 6px; }
+
+  .reviews-section { background: var(--grey); padding: 5rem 2rem; }
+  .ratings-row { display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .rating-block { display: flex; align-items: center; gap: 1rem; background: var(--black); border: 1px solid rgba(245,166,35,0.1); border-radius: 12px; padding: 1.1rem 1.5rem; }
+  .rating-number { font-family: 'Bebas Neue', sans-serif; font-size: 3.2rem; color: var(--gold); line-height: 1; }
+  .rating-detail { display: flex; flex-direction: column; }
+  .rating-source { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey-light); margin-top: 3px; font-weight: 500; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .review-card { background: var(--black); border: 1px solid rgba(245,166,35,0.08); border-radius: 12px; padding: 1.25rem 1.4rem; }
+  .review-stars { color: var(--gold); font-size: 13px; margin-bottom: 0.5rem; }
+  .review-text { font-size: 13.5px; color: rgba(250,250,247,0.65); line-height: 1.6; font-style: italic; font-weight: 300; margin-bottom: 0.75rem; }
+  .review-footer { display: flex; justify-content: space-between; align-items: center; }
+  .review-author { font-size: 12px; color: var(--grey-light); font-weight: 500; }
+  .review-source { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; }
+  .source-google { background: rgba(66,133,244,0.12); color: #6fa3f7; border: 1px solid rgba(66,133,244,0.2); }
+  .source-uber { background: rgba(232,98,26,0.12); color: var(--orange); border: 1px solid rgba(232,98,26,0.2); }
+
+  #contact { background: var(--black); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+  .contact-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(232,98,26,0.1); border: 1px solid rgba(232,98,26,0.18); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-icon svg { width: 18px; height: 18px; fill: var(--orange); }
+  .contact-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey-light); font-weight: 500; margin-bottom: 4px; }
+  .contact-value { font-size: 16px; font-weight: 600; color: var(--white); text-decoration: none; display: block; }
+  .contact-value:hover { color: var(--gold); }
+  .contact-value-sm { font-size: 14px; color: rgba(250,250,247,0.55); }
+  .hours-grid { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; margin-top: 4px; }
+  .hours-day { font-size: 13px; color: var(--grey-light); }
+  .hours-time { font-size: 13px; color: rgba(250,250,247,0.8); font-weight: 500; }
+  .map-embed { border-radius: 12px; overflow: hidden; border: 1px solid rgba(245,166,35,0.12); height: 310px; }
+  .map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+  footer { background: var(--grey); border-top: 1px solid rgba(245,166,35,0.08); padding: 2.5rem 2rem; text-align: center; }
+  .footer-logo { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1rem; }
+  .footer-logo img { width: 34px; height: 34px; border-radius: 6px; object-fit: cover; }
+  .footer-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 1.5px; color: var(--gold); }
+  footer p { font-size: 13px; color: var(--grey-light); }
+  .footer-divider { width: 36px; height: 1px; background: rgba(245,166,35,0.18); margin: 1rem auto; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .menu-header { flex-direction: column; align-items: flex-start; }
+    .info-bar { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="Logo.jpg" alt="Erindale Chicken & Seafood">
+    <div class="nav-brand">
+      <span class="b1">Erindale</span>
+      <span class="b2">Chicken & Seafood</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#order">Order</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="tel:0883322581" class="nav-cta">Call Us</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <img src="Logo.jpg" alt="Erindale Chicken & Seafood" class="hero-logo">
+  <div class="hero-name">Erindale</div>
+  <div class="hero-tagline">Chicken &amp; Seafood</div>
+  <div class="hero-divider"></div>
+  <div class="hero-rating">
+    <span class="stars">★★★★★</span>
+    <span><strong style="color:var(--white);">4.4</strong> &nbsp;·&nbsp; 150+ reviews on Google</span>
+    <span style="color:rgba(250,250,247,0.3);margin:0 4px;">|</span>
+    <span class="stars">★★★★★</span>
+    <span><strong style="color:var(--white);">4.8</strong> &nbsp;·&nbsp; 1,000+ ratings on Uber Eats</span>
+  </div>
+  <p class="hero-desc">Fresh chicken, butterfish, schnitzels and more — your local favourite on Kensington Road.</p>
+  <div class="hero-actions">
+    <a href="#menu" class="btn-primary">View Menu</a>
+    <a href="tel:0883322581" class="btn-secondary">(08) 8332 2581</a>
+  </div>
+</section>
+
+<div class="info-bar">
+  <div class="info-item">
+    <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.5 11.5 0 00.57 3.57 1 1 0 01-.25 1.02l-2.2 2.2z"/></svg></div>
+    <div class="info-stack"><span class="info-label">Phone</span><strong>(08) 8332 2581</strong></div>
+  </div>
+  <div class="info-item">
+    <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg></div>
+    <div class="info-stack"><span class="info-label">Address</span><strong>365C Kensington Rd, Kensington Gardens</strong></div>
+  </div>
+  <div class="info-item">
+    <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L11 13V7h1.5v5.25l4.5 2.67-1.77 1.08z"/></svg></div>
+    <div class="info-stack"><span class="info-label">Hours</span><strong>Mon–Fri 10:30am · Sat–Sun 11:00am</strong></div>
+  </div>
+</div>
+
+<section id="menu">
+  <div class="container">
+    <div class="menu-header">
+      <div>
+        <div class="section-label">What we serve</div>
+        <div class="section-title">Our Menu</div>
+        <p class="section-desc">Fresh and delicious, made to order every day.</p>
+      </div>
+      <div class="menu-tabs">
+        <button class="tab-btn active" onclick="showCategory('chicken', this)">Hot Chicken</button>
+        <button class="tab-btn" onclick="showCategory('chips', this)">Chips</button>
+        <button class="tab-btn" onclick="showCategory('chickenandchips', this)">Chicken &amp; Chips</button>
+        <button class="tab-btn" onclick="showCategory('seafood', this)">Seafood</button>
+        <button class="tab-btn" onclick="showCategory('seafoodcombos', this)">Seafood Combos</button>
+        <button class="tab-btn" onclick="showCategory('packs', this)">Hot &amp; Cold Packs</button>
+        <button class="tab-btn" onclick="showCategory('burgers', this)">Burger Bar</button>
+        <button class="tab-btn" onclick="showCategory('value', this)">Value Meals</button>
+        <button class="tab-btn" onclick="showCategory('lunch', this)">Lunchtime</button>
+        <button class="tab-btn" onclick="showCategory('salads', this)">Salads</button>
+        <button class="tab-btn" onclick="showCategory('addons', this)">Add-Ons</button>
+      </div>
+    </div>
+    <div class="menu-grid">
+
+      <!-- FREE RANGE HOT CHICKEN -->
+      <div class="menu-category active" id="cat-chicken">
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Whole Chicken</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$20.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Half Chicken</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$12.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Quarter Chicken</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$7.20</div></div>
+        </div>
+      </div>
+
+      <!-- CHIPS -->
+      <div class="menu-category" id="cat-chips">
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Minimum Chips</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$5.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Small Chips</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$7.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Regular Chips</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$11.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Large Chips</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$15.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Jumbo Chips</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$18.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Roast Potatoes</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$1.80</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Gravy Small</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$5.20</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Gravy Medium</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$7.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Gravy Large</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$10.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chips &amp; Gravy (small)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$11.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chips &amp; Gravy (regular)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$15.90</div></div>
+        </div>
+      </div>
+
+      <!-- CHICKEN & CHIPS -->
+      <div class="menu-category" id="cat-chickenandchips">
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chicken &amp; Chips (¼)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$13.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chicken &amp; Chips (½)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$17.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chicken, Chips &amp; Gravy (¼)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$17.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chicken, Chips &amp; Gravy (½)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$20.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chicken Nuggets &amp; Chips (6)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$13.20</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chicken Nuggets &amp; Chips (12)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$18.90</div></div>
+        </div>
+      </div>
+
+      <!-- SEAFOOD -->
+      <div class="menu-category" id="cat-seafood">
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Butterfish</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$7.20</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Garfish</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$9.30</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Whiting</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$12.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Calamari Rings (4)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$8.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Prawns (4)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$10.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Seafood Sticks (each)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$3.20</div></div>
+        </div>
+      </div>
+
+      <!-- SEAFOOD COMBOS -->
+      <div class="menu-category" id="cat-seafoodcombos">
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Butterfish &amp; Chips (1)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$13.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Butterfish &amp; Chips (2)</div><div class="menu-card-desc">2 Fish &amp; Chips — Battered or Crumbed</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$20.50</div><div class="popular-badge">Value Deal</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">3 Butterfish &amp; Regular Chips</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$31.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Garfish &amp; Chips (1)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$15.20</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Garfish &amp; Chips (2)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$24.40</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Whiting &amp; Chips (1)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$18.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Whiting &amp; Chips (2)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$31.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Calamari Pack</div><div class="menu-card-desc">6 Calamari, Chips &amp; Tartare</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$19.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Prawn Pack</div><div class="menu-card-desc">6 Prawns, Chips &amp; Tartare</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$20.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Seafood Pack</div><div class="menu-card-desc">Fish, 2 Prawns, 2 Calamari, Chips &amp; Tartare</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$21.50</div></div>
+        </div>
+      </div>
+
+      <!-- HOT & COLD PACKS -->
+      <div class="menu-category" id="cat-packs">
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">¼ Chicken (Hot/Cold) Pack</div><div class="menu-card-desc">Hot: with Chips, Roast Potatoes, Peas &amp; Gravy · Cold: with choice of 3 Salads or 2 Salads &amp; Chips</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$17.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">½ Chicken (Hot/Cold) Pack</div><div class="menu-card-desc">Hot: with Chips, Roast Potatoes, Peas &amp; Gravy · Cold: with choice of 3 Salads or 2 Salads &amp; Chips</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$20.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Schnitzel (Hot/Cold) Pack — Chicken</div><div class="menu-card-desc">Hot: with Chips, Peas &amp; Gravy · Cold: with choice of Salads</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$18.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Schnitzel (Hot/Cold) Pack — Beef</div><div class="menu-card-desc">Hot: with Chips, Peas &amp; Gravy · Cold: with choice of Salads</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$19.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">AB Schnitzel Pack — Chicken</div><div class="menu-card-desc">Served with Tomato, BBQ, Chilli &amp; Garlic Sauce</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$18.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">AB Schnitzel Pack — Beef</div><div class="menu-card-desc">Served with Tomato, BBQ, Chilli &amp; Garlic Sauce</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$19.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Roast Chicken, Chips &amp; Gravy</div><div class="menu-card-desc">De-boned Chicken</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$17.90</div></div>
+        </div>
+      </div>
+
+      <!-- BURGER BAR -->
+      <div class="menu-category" id="cat-burgers">
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Classic Burger</div><div class="menu-card-desc">Includes Salad &amp; Sauce · $1 extra for Steak Burger</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$10.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">EO Burger</div><div class="menu-card-desc">Egg &amp; Onion</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$12.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">BC Burger</div><div class="menu-card-desc">Bacon &amp; Cheese</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$12.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">CEO Burger</div><div class="menu-card-desc">Cheese, Egg &amp; Onion</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$13.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">COBE Burger</div><div class="menu-card-desc">Cheese, Onion, Bacon &amp; Egg</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$14.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">LOT Burger</div><div class="menu-card-desc">Cheese, Onion, Bacon, Egg &amp; Pineapple</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$15.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chicken Schnitzel Burger</div><div class="menu-card-desc">Lettuce &amp; Mayo</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$10.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Beef Schnitzel Burger</div><div class="menu-card-desc">Salad &amp; Sauce</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$11.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Potato Cake Burger</div><div class="menu-card-desc">Salad &amp; Sauce</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$10.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Fish Fillet Burger</div><div class="menu-card-desc">Salad &amp; Tartare Sauce</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$10.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Bacon &amp; Egg Roll</div><div class="menu-card-desc">BBQ Sauce</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$11.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Hot Dog</div><div class="menu-card-desc">Sauce</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$8.40</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Hot Dog LOT</div><div class="menu-card-desc">Cheese, Onion, Bacon, Sauce &amp; Mustard</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$12.90</div></div>
+        </div>
+      </div>
+
+      <!-- VALUE MEALS -->
+      <div class="menu-category" id="cat-value">
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">2 Fish &amp; Chips</div><div class="menu-card-desc">Battered or Crumbed</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$18.50</div><div class="popular-badge">Great Value</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chicken Value Meal</div><div class="menu-card-desc">Whole Chicken, Regular Chips &amp; Medium Salad</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$38.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">3 Fish &amp; Regular Chips</div><div class="menu-card-desc">Salad &amp; Tartare Sauce</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$29.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Lunchtime Fish &amp; Chips</div><div class="menu-card-desc">One Fish &amp; serve of Chips · Available 11:00am – 2:30pm</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$9.90</div></div>
+        </div>
+      </div>
+
+      <!-- LUNCHTIME COMBOS -->
+      <div class="menu-category" id="cat-lunch">
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Nugget Combo</div><div class="menu-card-desc">6 Chicken Nuggets, serve of Chips &amp; Can of Drink</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$14.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Burger Combo</div><div class="menu-card-desc">Classic Burger, serve of Chips &amp; Can of Drink</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$14.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Quarter Chicken Combo</div><div class="menu-card-desc">Quarter Chicken, serve of Chips &amp; Can of Drink</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$14.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Hot Dog Combo</div><div class="menu-card-desc">Hot Dog with Sauce, serve of Chips &amp; Can of Drink</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$14.90</div></div>
+        </div>
+      </div>
+
+      <!-- SALADS -->
+      <div class="menu-category" id="cat-salads">
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Small Salad</div><div class="menu-card-desc">Coleslaw (gf) · Potato (gf) · Pasta · Chicken Pasta · Bean (gf) · Tabouli · Greek (gf) · Seafood</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$6.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Medium Salad</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$9.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Large Salad</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$13.50</div></div>
+        </div>
+      </div>
+
+      <!-- ADD-ONS -->
+      <div class="menu-category" id="cat-addons">
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chiko / Corn Jack</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$4.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Dim Sim</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$2.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Potato Cake</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$2.50</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chicken Nuggets (6)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$7.20</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chicken Nuggets (12)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$13.90</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Pineapple Fritter</div><div class="menu-card-desc">Cinnamon Sugar</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$3.20</div></div>
+        </div>
+        <div class="menu-card">
+          <div class="menu-card-info"><div class="menu-card-name">Chicken Munchies (12)</div></div>
+          <div class="menu-card-right"><div class="menu-card-price">$4.90</div></div>
+        </div>
+      </div>
+
+    </div>
+    <p style="margin-top:1.5rem;font-size:12.5px;color:var(--grey-light);">* All chips are seasoned with chicken salt unless specified otherwise. All fish is battered unless specified. Tartare Sauce is $1 extra. Prices may vary.</p>
+  </div>
+</section>
+
+<div class="order-section" id="order">
+  <div class="section-label">Hungry now?</div>
+  <div class="section-title">Order &amp; Pickup</div>
+  <p class="section-desc">Call ahead for pickup or order delivery through Uber Eats.</p>
+  <div class="order-options">
+    <a href="tel:0883322581" class="order-card">
+      <span class="order-card-icon">📞</span>
+      <span class="order-card-label">Call to Order</span>
+      <span class="order-card-sub">(08) 8332 2581</span>
+    </a>
+    <div class="order-card" style="cursor:default;opacity:0.55;">
+      <span class="order-card-icon">🛒</span>
+      <span class="order-card-label">Online Order</span>
+      <span class="order-card-sub">Direct ordering</span>
+      <div class="coming-soon-badge">Coming Soon</div>
+    </div>
+    <a href="https://www.ubereats.com/au/store/erindale-chicken-%26-seafood/OvBJRPQhSaWqO2rJGeE7iQ?diningMode=DELIVERY" target="_blank" class="order-card">
+      <span class="order-card-icon">🛵</span>
+      <span class="order-card-label">Uber Eats</span>
+      <span class="order-card-sub">Delivery available</span>
+    </a>
+  </div>
+</div>
+
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div class="section-label">Ratings &amp; Reviews</div>
+    <div class="section-title">What Customers Say</div>
+    <div class="ratings-row">
+      <div class="rating-block">
+        <div class="rating-number">4.4</div>
+        <div class="rating-detail">
+          <span class="stars" style="font-size:16px;">★★★★★</span>
+          <span style="font-size:13px;color:var(--white);font-weight:600;margin-top:2px;">150+ reviews</span>
+          <span class="rating-source">Google</span>
+        </div>
+      </div>
+      <div class="rating-block">
+        <div class="rating-number">4.8</div>
+        <div class="rating-detail">
+          <span class="stars" style="font-size:16px;">★★★★★</span>
+          <span style="font-size:13px;color:var(--white);font-weight:600;margin-top:2px;">1,000+ ratings</span>
+          <span class="rating-source">Uber Eats</span>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Quality seafood and chicken shop. Probably the best chips anywhere in the eastern suburbs. Highly recommend the 2 fish and chips combo for under $20, easily feeds 2."</p>
+        <div class="review-footer"><div class="review-author">John Tsouroutis</div><span class="review-source source-google">Google</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Great local for chicken, fish, chips, salad or anything in between. Clean, tidy and prompt service with a smile."</p>
+        <div class="review-footer"><div class="review-author">Tom R.</div><span class="review-source source-google">Google</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Holy smokes! Amazing chicken and chips, accompanied by friendly and efficient service! Will definitely be coming back!"</p>
+        <div class="review-footer"><div class="review-author">LiamTheEuropean</div><span class="review-source source-google">Google</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Extremely warm and welcoming staff. Very good value for money. High quality, fresh and tasting food. Our new favourite chicken shop! Highly recommend."</p>
+        <div class="review-footer"><div class="review-author">Paul K</div><span class="review-source source-google">Google</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Erindale Chicken and Seafood is hands down the best chicken shop in South Australia. Every visit feels like you’re stepping into a place that genuinely cares about quality, freshness and great service."</p>
+        <div class="review-footer"><div class="review-author">Samantha Li</div><span class="review-source source-google">Google</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"10/10 recommendation. New owners have made this place amazing. Great food and friendly staff, will definitely be going back!"</p>
+        <div class="review-footer"><div class="review-author">Raine C.</div><span class="review-source source-google">Google</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Best Fish and chips around."</p>
+        <div class="review-footer"><div class="review-author">Lesley-Ann M.</div><span class="review-source source-uber">Uber Eats</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Still crispy fish and chips which often doesn't happen with delivered food. Like I picked it up from the shop myself."</p>
+        <div class="review-footer"><div class="review-author">Verity P.</div><span class="review-source source-uber">Uber Eats</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Amazing chicken… fresh, tender and perfectly seasoned."</p>
+        <div class="review-footer"><div class="review-author">Mark G.</div><span class="review-source source-uber">Uber Eats</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Find us</div>
+        <div class="section-title">Get in Touch</div>
+        <p class="section-desc" style="margin-bottom:2.5rem;">Come visit us or give us a call — we'd love to see you.</p>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.58.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.5 11.5 0 00.57 3.57 1 1 0 01-.25 1.02l-2.2 2.2z"/></svg></div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <a href="tel:0883322581" class="contact-value">(08) 8332 2581</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg></div>
+          <div>
+            <div class="contact-label">Address</div>
+            <div class="contact-value" style="cursor:default;">365C Kensington Road</div>
+            <div class="contact-value-sm">Kensington Gardens SA 5068</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L11 13V7h1.5v5.25l4.5 2.67-1.77 1.08z"/></svg></div>
+          <div>
+            <div class="contact-label">Trading Hours</div>
+            <div class="hours-grid">
+              <span class="hours-day">Mon – Fri</span><span class="hours-time">10:30 am – 8:00 pm</span>
+              <span class="hours-day">Saturday</span><span class="hours-time">11:00 am – 8:00 pm</span>
+              <span class="hours-day">Sunday</span><span class="hours-time">11:00 am – 8:00 pm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3271.2421609466182!2d138.660552!3d-34.9254632!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0cb95f1598f29%3A0x7cdb888177d6b513!2sErindale%20Chicken%20%26%20Seafood!5e0!3m2!1sen!2sau!4v1773651684272!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img src="Logo.jpg" alt="Logo">
+    <span class="footer-logo-text">Erindale Chicken &amp; Seafood</span>
+  </div>
+  <p>365C Kensington Road, Kensington Gardens SA 5068 &nbsp;·&nbsp; (08) 8332 2581</p>
+  <div class="footer-divider"></div>
+  <p style="font-size:12px;opacity:0.45;">© 2025 Erindale Chicken &amp; Seafood. All rights reserved.</p>
+</footer>
+
+<script>
+  function showCategory(cat, btn) {
+    document.querySelectorAll('.menu-category').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('cat-' + cat).classList.add('active');
+    btn.classList.add('active');
+  }
+  // Also handle the lunchtime note
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const cat = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+      const note = document.getElementById('lunch-note');
+      if (note) note.style.display = (cat === 'lunch') ? 'block' : 'none';
+    });
+  });
+</script>
+</body>
+</html>
