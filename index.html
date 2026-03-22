@@ -41,6 +41,31 @@
   .nav-cta { background: var(--orange) !important; color: var(--white) !important; opacity: 1 !important; padding: 8px 20px; border-radius: 6px; font-weight: 600 !important; }
   .nav-cta:hover { background: var(--gold) !important; color: var(--black) !important; }
 
+  /* Menu tab image header */
+  .menu-tab-image {
+    width: 100%; height: 220px; border-radius: 12px; overflow: hidden;
+    margin-bottom: 2rem; position: relative;
+  }
+  .menu-tab-image img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+    display: block; transition: transform 0.4s ease;
+  }
+  .menu-tab-image:hover img { transform: scale(1.02); }
+  .menu-tab-image-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.1) 60%, transparent 100%);
+  }
+  .menu-tab-image-label {
+    position: absolute; bottom: 1.25rem; left: 1.5rem;
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 2px;
+    color: var(--white); line-height: 1;
+  }
+  .menu-tab-image-label span {
+    display: block; font-family: 'DM Sans', sans-serif;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--orange); font-weight: 600; margin-bottom: 4px;
+  }
+
   .hero {
     min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: 7rem 2rem 5rem; position: relative; overflow: hidden;
@@ -99,7 +124,17 @@
   .menu-card-price { font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 1px; color: var(--gold); white-space: nowrap; }
   .popular-badge { background: rgba(232,98,26,0.15); color: var(--orange); font-size: 10px; font-weight: 600; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 100px; border: 1px solid rgba(232,98,26,0.25); white-space: nowrap; }
 
-  .order-section { background: var(--grey); border-top: 1px solid rgba(245,166,35,0.1); border-bottom: 1px solid rgba(245,166,35,0.1); text-align: center; padding: 5rem 2rem; }
+  .order-section {
+    position: relative; text-align: center; padding: 5rem 2rem;
+    border-top: 1px solid rgba(245,166,35,0.1); border-bottom: 1px solid rgba(245,166,35,0.1);
+    background-image:
+      linear-gradient(rgba(10,10,10,0.78), rgba(10,10,10,0.78)),
+      url('Images/Background/BackgroundHoriz.jpg');
+    background-size: auto, 2100px auto;
+    background-repeat: no-repeat, repeat;
+  }
+  .order-section-bg, .order-section-overlay { display: none; }
+  .order-section > * { position: relative; z-index: 1; }
   .order-section .section-desc { margin: 0 auto 2.5rem; }
   .order-options { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
   .order-card { background: var(--black); border: 1px solid rgba(245,166,35,0.12); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; min-width: 175px; text-decoration: none; color: var(--white); transition: border-color 0.2s, transform 0.2s; display: block; }
@@ -109,7 +144,16 @@
   .order-card-sub { font-size: 12px; color: var(--grey-light); }
   .coming-soon-badge { display: inline-block; background: rgba(232,98,26,0.12); color: var(--orange); font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; border: 1px solid rgba(232,98,26,0.25); margin-top: 6px; }
 
-  .reviews-section { background: var(--grey); padding: 5rem 2rem; }
+  .reviews-section {
+    position: relative; padding: 5rem 2rem;
+    background-image:
+      linear-gradient(rgba(22,22,22,0.8), rgba(22,22,22,0.8)),
+      url('Images/Backgrounds/TilePattern.jpg');
+    background-size: auto, 280px auto;
+    background-repeat: no-repeat, repeat;
+  }
+  .reviews-section-bg, .reviews-section-overlay { display: none; }
+  .reviews-section > * { position: relative; z-index: 1; }
   .ratings-row { display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
   .rating-block { display: flex; align-items: center; gap: 1rem; background: var(--black); border: 1px solid rgba(245,166,35,0.1); border-radius: 12px; padding: 1.1rem 1.5rem; }
   .rating-number { font-family: 'Bebas Neue', sans-serif; font-size: 3.2rem; color: var(--gold); line-height: 1; }
@@ -160,7 +204,7 @@
 
 <nav>
   <a href="#" class="nav-logo">
-    <img src="Images/Logo/LogoBG.jpg" alt="Erindale Chicken & Seafood">
+    <img src="Images/Logo/LogoNoBG.png" alt="Erindale Chicken & Seafood">
     <div class="nav-brand">
       <span class="b1">Erindale</span>
       <span class="b2">Chicken & Seafood</span>
@@ -232,6 +276,16 @@
         <button class="tab-btn" onclick="showCategory('addons', this)">Add-Ons</button>
       </div>
     </div>
+    <!-- Tab header image - changes with active tab -->
+    <div class="menu-tab-image" id="menu-tab-image">
+      <img id="menu-tab-img" src="Images/Menu/Chicken.jpg" alt="Hot Chicken">
+      <div class="menu-tab-image-overlay"></div>
+      <div class="menu-tab-image-label">
+        <span>Free Range</span>
+        Hot Chicken
+      </div>
+    </div>
+
     <div class="menu-grid">
 
       <!-- FREE RANGE HOT CHICKEN -->
@@ -580,6 +634,8 @@
 </section>
 
 <div class="order-section" id="order">
+  <div class="order-section-bg"></div>
+  <div class="order-section-overlay"></div>
   <div class="section-label">Hungry now?</div>
   <div class="section-title">Order &amp; Pickup</div>
   <p class="section-desc">Call ahead for pickup or order delivery through Uber Eats.</p>
@@ -604,6 +660,8 @@
 </div>
 
 <section class="reviews-section" id="reviews">
+  <div class="reviews-section-bg"></div>
+  <div class="reviews-section-overlay"></div>
   <div class="container">
     <div class="section-label">Ratings &amp; Reviews</div>
     <div class="section-title">What Customers Say</div>
@@ -727,13 +785,37 @@
 </footer>
 
 <script>
+  const tabImages = {
+    chicken:        { src: 'Images/Menu/Chicken.jpg',     sub: 'Free Range',   title: 'Hot Chicken' },
+    chips:          { src: 'Images/Menu/Chips.jpg',          sub: 'Golden',        title: 'Chips' },
+    chickenandchips:{ src: 'Images/Menu/ChickennChips.jpg',   sub: 'Classic',       title: 'Chicken & Chips' },
+    seafood:        { src: 'Images/Menu/Seafood.jpg',        sub: 'Fresh',         title: 'Seafood' },
+    seafoodcombos:  { src: 'Images/Menu/SeafoodCombos.jpg',  sub: 'Great Value',   title: 'Seafood Combos' },
+    packs:          { src: 'Images/Menu/HotColdPacks.jpg',   sub: 'Hot or Cold',   title: 'Meal Packs' },
+    burgers:        { src: 'Images/Menu/BurgerBar.jpg',        sub: 'Made Fresh',    title: 'Burger Bar' },
+    value:          { src: 'Images/Menu/ValueMeals.jpg',     sub: 'Best Value',    title: 'Value Meals' },
+    lunch:          { src: 'Images/Menu/Lunchtime.jpg',      sub: '11am – 2:30pm', title: 'Lunchtime Combos' },
+    salads:         { src: 'Images/Menu/Salads.jpg',         sub: 'Fresh Daily',   title: 'Salads' },
+    addons:         { src: 'Images/Menu/Snacks.jpg',         sub: 'Tasty',         title: 'Add-Ons' },
+  };
+
   function showCategory(cat, btn) {
     document.querySelectorAll('.menu-category').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
     document.getElementById('cat-' + cat).classList.add('active');
     btn.classList.add('active');
+
+    const data = tabImages[cat];
+    if (data) {
+      const img = document.getElementById('menu-tab-img');
+      const label = document.querySelector('.menu-tab-image-label');
+      img.src = data.src;
+      img.alt = data.title;
+      label.innerHTML = '<span>' + data.sub + '</span>' + data.title;
+    }
   }
-  // Also handle the lunchtime note
+
+  // Lunchtime note
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       const cat = this.getAttribute('onclick').match(/'([^']+)'/)[1];
