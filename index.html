@@ -8,6 +8,19 @@
 <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
 
 <title>Erindale Chicken & Seafood</title>
+
+<!-- Preload menu tab images for instant switching -->
+<link rel="preload" as="image" href="Images/Menu/Chicken.jpg">
+<link rel="preload" as="image" href="Images/Menu/Chips.jpg">
+<link rel="preload" as="image" href="Images/Menu/ChickennChips.jpg">
+<link rel="preload" as="image" href="Images/Menu/Seafood.jpg">
+<link rel="preload" as="image" href="Images/Menu/SeafoodCombos.jpg">
+<link rel="preload" as="image" href="Images/Menu/HotColdPacks.jpg">
+<link rel="preload" as="image" href="Images/Menu/BurgerBar.jpg">
+<link rel="preload" as="image" href="Images/Menu/ValueMeals.jpg">
+<link rel="preload" as="image" href="Images/Menu/Lunchtime.jpg">
+<link rel="preload" as="image" href="Images/Menu/Salads.jpg">
+<link rel="preload" as="image" href="Images/Menu/Snacks.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -785,6 +798,24 @@
 </footer>
 
 <script>
+  // Preload all menu tab images into browser cache on page load
+  (function() {
+    const srcs = [
+      'Images/Menu/Chicken.jpg',
+      'Images/Menu/Chips.jpg',
+      'Images/Menu/ChickennChips.jpg',
+      'Images/Menu/Seafood.jpg',
+      'Images/Menu/SeafoodCombos.jpg',
+      'Images/Menu/HotColdPacks.jpg',
+      'Images/Menu/BurgerBar.jpg',
+      'Images/Menu/ValueMeals.jpg',
+      'Images/Menu/Lunchtime.jpg',
+      'Images/Menu/Salads.jpg',
+      'Images/Menu/Snacks.jpg',
+    ];
+    srcs.forEach(src => { const img = new Image(); img.src = src; });
+  })();
+
   const tabImages = {
     chicken:        { src: 'Images/Menu/Chicken.jpg',     sub: 'Free Range',   title: 'Hot Chicken' },
     chips:          { src: 'Images/Menu/Chips.jpg',          sub: 'Golden',        title: 'Chips' },
