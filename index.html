@@ -17,8 +17,6 @@
 <link rel="preload" as="image" href="Images/Menu/SeafoodCombos.jpg">
 <link rel="preload" as="image" href="Images/Menu/HotColdPacks.jpg">
 <link rel="preload" as="image" href="Images/Menu/BurgerBar.jpg">
-<link rel="preload" as="image" href="Images/Menu/ValueMeals.jpg">
-<link rel="preload" as="image" href="Images/Menu/Lunchtime.jpg">
 <link rel="preload" as="image" href="Images/Menu/Salads.jpg">
 <link rel="preload" as="image" href="Images/Menu/Snacks.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
@@ -204,6 +202,17 @@
   footer p { font-size: 13px; color: var(--grey-light); }
   .footer-divider { width: 36px; height: 1px; background: rgba(245,166,35,0.18); margin: 1rem auto; }
 
+  /* Specials section */
+  #specials { background: var(--black); }
+  .specials-hero { width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(245,166,35,0.1); margin-bottom: 1.5rem; }
+  .specials-hero img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
+  .specials-hero:hover img { transform: scale(1.01); }
+  .specials-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .special-img { border-radius: 12px; overflow: hidden; border: 1px solid rgba(245,166,35,0.1); }
+  .special-img img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
+  .special-img:hover img { transform: scale(1.01); }
+  @media (max-width: 600px) { .specials-row { grid-template-columns: 1fr; } }
+
   @media (max-width: 768px) {
     nav { padding: 0 1rem; }
     .nav-links { display: none; }
@@ -225,6 +234,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#menu">Menu</a></li>
+    <li><a href="#specials">Specials</a></li>
     <li><a href="#order">Order</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -283,8 +293,6 @@
         <button class="tab-btn" onclick="showCategory('seafoodcombos', this)">Seafood Combos</button>
         <button class="tab-btn" onclick="showCategory('packs', this)">Hot &amp; Cold Packs</button>
         <button class="tab-btn" onclick="showCategory('burgers', this)">Burger Bar</button>
-        <button class="tab-btn" onclick="showCategory('value', this)">Value Meals</button>
-        <button class="tab-btn" onclick="showCategory('lunch', this)">Lunchtime</button>
         <button class="tab-btn" onclick="showCategory('salads', this)">Salads</button>
         <button class="tab-btn" onclick="showCategory('addons', this)">Add-Ons</button>
       </div>
@@ -553,46 +561,6 @@
         </div>
       </div>
 
-      <!-- VALUE MEALS -->
-      <div class="menu-category" id="cat-value">
-        <div class="menu-card">
-          <div class="menu-card-info"><div class="menu-card-name">2 Fish &amp; Chips</div><div class="menu-card-desc">Battered or Crumbed</div></div>
-          <div class="menu-card-right"><div class="menu-card-price">$18.50</div><div class="popular-badge">Great Value</div></div>
-        </div>
-        <div class="menu-card">
-          <div class="menu-card-info"><div class="menu-card-name">Chicken Value Meal</div><div class="menu-card-desc">Whole Chicken, Regular Chips &amp; Medium Salad</div></div>
-          <div class="menu-card-right"><div class="menu-card-price">$38.90</div></div>
-        </div>
-        <div class="menu-card">
-          <div class="menu-card-info"><div class="menu-card-name">3 Fish &amp; Regular Chips</div><div class="menu-card-desc">Salad &amp; Tartare Sauce</div></div>
-          <div class="menu-card-right"><div class="menu-card-price">$29.90</div></div>
-        </div>
-        <div class="menu-card">
-          <div class="menu-card-info"><div class="menu-card-name">Lunchtime Fish &amp; Chips</div><div class="menu-card-desc">One Fish &amp; serve of Chips · Available 11:00am – 2:30pm</div></div>
-          <div class="menu-card-right"><div class="menu-card-price">$9.90</div></div>
-        </div>
-      </div>
-
-      <!-- LUNCHTIME COMBOS -->
-      <div class="menu-category" id="cat-lunch">
-        <div class="menu-card">
-          <div class="menu-card-info"><div class="menu-card-name">Nugget Combo</div><div class="menu-card-desc">6 Chicken Nuggets, serve of Chips &amp; Can of Drink</div></div>
-          <div class="menu-card-right"><div class="menu-card-price">$14.90</div></div>
-        </div>
-        <div class="menu-card">
-          <div class="menu-card-info"><div class="menu-card-name">Burger Combo</div><div class="menu-card-desc">Classic Burger, serve of Chips &amp; Can of Drink</div></div>
-          <div class="menu-card-right"><div class="menu-card-price">$14.90</div></div>
-        </div>
-        <div class="menu-card">
-          <div class="menu-card-info"><div class="menu-card-name">Quarter Chicken Combo</div><div class="menu-card-desc">Quarter Chicken, serve of Chips &amp; Can of Drink</div></div>
-          <div class="menu-card-right"><div class="menu-card-price">$14.90</div></div>
-        </div>
-        <div class="menu-card">
-          <div class="menu-card-info"><div class="menu-card-name">Hot Dog Combo</div><div class="menu-card-desc">Hot Dog with Sauce, serve of Chips &amp; Can of Drink</div></div>
-          <div class="menu-card-right"><div class="menu-card-price">$14.90</div></div>
-        </div>
-      </div>
-
       <!-- SALADS -->
       <div class="menu-category" id="cat-salads">
         <div class="menu-card">
@@ -643,6 +611,27 @@
 
     </div>
     <p style="margin-top:1.5rem;font-size:12.5px;color:var(--grey-light);">* All chips are seasoned with chicken salt unless specified otherwise. All fish is battered unless specified. Tartare Sauce is $1 extra. Prices may vary.</p>
+  </div>
+</section>
+
+<section id="specials">
+  <div class="container">
+    <div class="section-label">Great Deals</div>
+    <div class="section-title">Specials</div>
+    <p class="section-desc">Value meals and lunchtime deals — made fresh every time.</p>
+    <div class="specials-grid" style="margin-top:2.5rem;">
+      <div class="specials-hero">
+        <img src="Images/Menu/2FishScreen.jpg" alt="2 Fish & Chips $18.50">
+      </div>
+      <div class="specials-row">
+        <div class="special-img">
+          <img src="Images/Menu/3FishScreen.jpg" alt="3 Fish & Regular Chips $29.90 and Chicken Value Meal $38.90">
+        </div>
+        <div class="special-img">
+          <img src="Images/Menu/Lunchtime.jpg" alt="Lunchtime Combos $14.90 and Lunchtime Fish & Chips $9.90">
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -808,8 +797,6 @@
       'Images/Menu/SeafoodCombos.jpg',
       'Images/Menu/HotColdPacks.jpg',
       'Images/Menu/BurgerBar.jpg',
-      'Images/Menu/ValueMeals.jpg',
-      'Images/Menu/Lunchtime.jpg',
       'Images/Menu/Salads.jpg',
       'Images/Menu/Snacks.jpg',
     ];
@@ -824,8 +811,6 @@
     seafoodcombos:  { src: 'Images/Menu/SeafoodCombos.jpg',  sub: 'Great Value',   title: 'Seafood Combos' },
     packs:          { src: 'Images/Menu/HotColdPacks.jpg',   sub: 'Hot or Cold',   title: 'Meal Packs' },
     burgers:        { src: 'Images/Menu/BurgerBar.jpg',        sub: 'Made Fresh',    title: 'Burger Bar' },
-    value:          { src: 'Images/Menu/ValueMeals.jpg',     sub: 'Best Value',    title: 'Value Meals' },
-    lunch:          { src: 'Images/Menu/Lunchtime.jpg',      sub: '11am – 2:30pm', title: 'Lunchtime Combos' },
     salads:         { src: 'Images/Menu/Salads.jpg',         sub: 'Fresh Daily',   title: 'Salads' },
     addons:         { src: 'Images/Menu/Snacks.jpg',         sub: 'Tasty',         title: 'Add-Ons' },
   };
