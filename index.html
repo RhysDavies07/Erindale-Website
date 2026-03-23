@@ -126,6 +126,7 @@
   .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1rem; }
   .menu-category { display: none; }
   .menu-category.active { display: contents; }
+  #cat-salads.active { display: block; }
   .menu-card { background: var(--grey); border: 1px solid rgba(245,166,35,0.08); border-radius: 12px; padding: 1.1rem 1.35rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; transition: border-color 0.2s, transform 0.2s; }
   .menu-card:hover { border-color: rgba(232,98,26,0.35); transform: translateY(-2px); }
   .menu-card-info { flex: 1; }
@@ -201,6 +202,44 @@
   .footer-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 1.5px; color: var(--gold); }
   footer p { font-size: 13px; color: var(--grey-light); }
   .footer-divider { width: 36px; height: 1px; background: rgba(245,166,35,0.18); margin: 1rem auto; }
+
+  /* Salads layout */
+  #cat-salads.active {
+    display: block;
+    grid-column: 1 / -1;
+  }
+  .salads-outer {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1rem;
+    width: 100%;
+  }
+  .salads-sizes {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .salads-sizes .menu-card {
+    flex: 1;
+  }
+  .salads-cols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .salads-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .salads-col .menu-card {
+    flex: 1;
+    max-height: calc(50% - 0.5rem);
+  }
+  @media (max-width: 768px) {
+    .salads-outer { grid-template-columns: 1fr; }
+    .salads-cols { grid-template-columns: repeat(2, 1fr); }
+  }
 
   /* Specials section */
   #specials { background: var(--black); }
@@ -563,17 +602,52 @@
 
       <!-- SALADS -->
       <div class="menu-category" id="cat-salads">
-        <div class="menu-card">
-          <div class="menu-card-info"><div class="menu-card-name">Small Salad</div><div class="menu-card-desc">Coleslaw (gf) · Potato (gf) · Pasta · Chicken Pasta · Bean (gf) · Tabouli · Greek (gf) · Seafood</div></div>
-          <div class="menu-card-right"><div class="menu-card-price">$6.50</div></div>
-        </div>
-        <div class="menu-card">
-          <div class="menu-card-info"><div class="menu-card-name">Medium Salad</div></div>
-          <div class="menu-card-right"><div class="menu-card-price">$9.50</div></div>
-        </div>
-        <div class="menu-card">
-          <div class="menu-card-info"><div class="menu-card-name">Large Salad</div></div>
-          <div class="menu-card-right"><div class="menu-card-price">$13.50</div></div>
+        <div class="salads-outer">
+          <div class="salads-sizes">
+            <div class="menu-card">
+              <div class="menu-card-info"><div class="menu-card-name">Small</div></div>
+              <div class="menu-card-right"><div class="menu-card-price">$6.50</div></div>
+            </div>
+            <div class="menu-card">
+              <div class="menu-card-info"><div class="menu-card-name">Medium</div></div>
+              <div class="menu-card-right"><div class="menu-card-price">$9.50</div></div>
+            </div>
+            <div class="menu-card">
+              <div class="menu-card-info"><div class="menu-card-name">Large</div></div>
+              <div class="menu-card-right"><div class="menu-card-price">$13.50</div></div>
+            </div>
+          </div>
+          <div class="salads-cols">
+            <div class="salads-col">
+              <div class="menu-card">
+                <div class="menu-card-info"><div class="menu-card-name">Coleslaw</div><div class="menu-card-desc">Gluten free</div></div>
+              </div>
+              <div class="menu-card">
+                <div class="menu-card-info"><div class="menu-card-name">Potato Salad</div><div class="menu-card-desc">Gluten free</div></div>
+              </div>
+            </div>
+            <div class="salads-col">
+              <div class="menu-card">
+                <div class="menu-card-info"><div class="menu-card-name">Pasta Salad</div></div>
+              </div>
+              <div class="menu-card">
+                <div class="menu-card-info"><div class="menu-card-name">Bean Salad</div><div class="menu-card-desc">Gluten free</div></div>
+              </div>
+            </div>
+            <div class="salads-col">
+              <div class="menu-card">
+                <div class="menu-card-info"><div class="menu-card-name">Tabouli</div><div class="menu-card-desc">Gluten free</div></div>
+              </div>
+              <div class="menu-card">
+                <div class="menu-card-info"><div class="menu-card-name">Greek Salad</div><div class="menu-card-desc">Gluten free</div></div>
+              </div>
+            </div>
+            <div class="salads-col">
+              <div class="menu-card">
+                <div class="menu-card-info"><div class="menu-card-name">Seafood Salad</div></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
