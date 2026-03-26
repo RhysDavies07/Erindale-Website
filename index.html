@@ -8,7 +8,8 @@
 <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
 
 <title>Erindale Chicken & Seafood</title>
-
+<link rel="preload" as="image" href="Images/Logo/LogoBG.jpg">
+<link rel="preload" as="image" href="Images/Logo/LogoNoBg.png">
 <!-- Preload menu tab images for instant switching -->
 <!--<link rel="preload" as="image" href="Images/Menu/Chicken.jpg">
 <link rel="preload" as="image" href="Images/Menu/Chips.jpg">
@@ -386,7 +387,7 @@
 
 <nav>
   <a href="#" class="nav-logo">
-    <img src="Images/Logo/LogoNoBg.png" alt="Erindale Chicken & Seafood">
+    <img src="Images/Logo/LogoNoBg.png" alt="Erindale Chicken & Seafood" fetchpriority="high">
     <div class="nav-brand">
       <span class="b1">Erindale</span>
       <span class="b2">Chicken & Seafood</span>
@@ -420,7 +421,7 @@
 
 <section class="hero" id="home">
   <div class="hero-bg"></div>
-  <img src="Images/Logo/LogoBG.jpg" alt="Erindale Chicken & Seafood" class="hero-logo">
+  <img src="Images/Logo/LogoBG.jpg" alt="Erindale Chicken & Seafood" class="hero-logo" fetchpriority="high">
   <div class="hero-name">Erindale</div>
   <div class="hero-tagline">Chicken &amp; Seafood</div>
   <div class="hero-divider"></div>
@@ -1019,7 +1020,7 @@
 
 <script>
   // Preload all menu tab images into browser cache on page load
-  /* (function() {
+  (function() {
     const srcs = [
       'Images/Menu/Chicken.jpg',
       'Images/Menu/Chips.jpg',
@@ -1032,7 +1033,7 @@
       'Images/Menu/Snacks.jpg',
     ];
     srcs.forEach(src => { const img = new Image(); img.src = src; });
-  })(); */
+  })();
 
   const tabImages = {
     chicken:        { src: 'Images/Menu/Chicken.jpg',     sub: 'Free Range',   title: 'Hot Chicken' },
