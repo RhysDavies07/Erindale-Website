@@ -1056,10 +1056,15 @@
 
     const data = tabImages[cat];
     if (data) {
-      const img = document.getElementById('menu-tab-img');
+      const displayImg = document.getElementById('menu-tab-img');
       const label = document.querySelector('.menu-tab-image-label');
-      img.src = data.src;
-      img.alt = data.title;
+      const poolImg = document.querySelector('div[aria-hidden="true"] img[src="' + data.src + '"]');
+      if (poolImg && poolImg.complete) {
+        displayImg.src = poolImg.src;
+      } else {
+        displayImg.src = data.src;
+      }
+      displayImg.alt = data.title;
       label.innerHTML = '<span>' + data.sub + '</span>' + data.title;
     }
   }
@@ -1094,5 +1099,17 @@
     }
   });
 </script>
+<!-- Hidden image pool — keeps all tab images alive in DOM so browser never evicts them -->
+<div style="display:none;" aria-hidden="true">
+  <img src="Images/Menu/Chicken.jpg" alt="">
+  <img src="Images/Menu/Chips.jpg" alt="">
+  <img src="Images/Menu/ChickennChips.jpg" alt="">
+  <img src="Images/Menu/Seafood.jpg" alt="">
+  <img src="Images/Menu/SeafoodCombos.jpg" alt="">
+  <img src="Images/Menu/HotColdPacks.jpg" alt="">
+  <img src="Images/Menu/BurgerBar.jpg" alt="">
+  <img src="Images/Menu/Salads.jpg" alt="">
+  <img src="Images/Menu/Snacks.jpg" alt="">
+</div>
 </body>
 </html>
