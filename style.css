@@ -22,7 +22,7 @@
   .nav-logo img { width: 42px; height: 42px; border-radius: 8px; object-fit: cover; }
   .nav-brand { display: flex; flex-direction: column; line-height: 1.1; }
   .nav-brand .b1 { font-family: 'Blacksword', cursive; font-size: 22px; color: var(--white); line-height: 1; }
-  .nav-brand .b2 { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); font-weight: 700; }
+  .nav-brand .b2 { font-family: 'BigNoodleTitling'; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #f59e1d; font-weight: 30; }
   .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
   .nav-links a { text-decoration: none; color: var(--white); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; opacity: 0.7; transition: opacity 0.2s, color 0.2s; }
   .nav-links a:hover { opacity: 1; color: var(--gold); }
@@ -135,6 +135,7 @@
   .hero {
     min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: 7rem 2rem 5rem; position: relative; overflow: hidden;
+    border-bottom: 1px solid rgba(245,166,35,0.1)
   }
   .hero-bg {
     position: absolute; inset: 0;
@@ -147,15 +148,22 @@
     font-weight: normal;
     font-style: normal;
   }
+
+  @font-face {
+    font-family: 'BigNoodleTitling';
+    src: url('Fonts/BigNoodleTitling.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
   .hero-logo { width: 150px; height: 150px; border-radius: 18px; object-fit: cover; margin-bottom: 1.5rem; border: 2px solid rgba(245,166,35,0.25); position: relative; }
-  .hero-name { font-family: 'Blacksword', cursive; font-size: clamp(3.5rem, 9vw, 6.5rem); color: var(--white); line-height: 1; margin-bottom: 0.4rem; position: relative; }
-  .hero-tagline { font-size: clamp(0.7rem, 1.8vw, 0.95rem); letter-spacing: 4px; text-transform: uppercase; font-weight: 700; color: var(--orange); margin-bottom: 1.75rem; position: relative; }
+  .hero-name { font-family: 'Blacksword', cursive; font-size: clamp(4.5rem, 9vw, 6.5rem); color: var(--white); line-height: 1; margin-bottom: 0.4rem; position: relative; }
+  .hero-tagline { font-family: 'BigNoodleTitling'; font-size: clamp(1.3rem, 2.5vw, 1.4rem); letter-spacing: 4px; text-transform: uppercase; font-weight: 300; color: #f59e1d; margin-bottom: 1.75rem; position: relative; }
   .hero-divider { width: 50px; height: 2px; background: linear-gradient(90deg, var(--orange), var(--gold)); border-radius: 2px; margin: 0 auto 1.75rem; position: relative; }
   /* Container setup */
   .hero-rating {
     display: flex;
     flex-direction: column; /* Stacked by default (Mobile) */
-    align-items: center;
+    align-items: flex-start;
     gap: 12px; /* Space between the two groups when stacked */
     font-size: 14px;
     color: rgba(250,250,247,0.6);
