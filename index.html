@@ -31,8 +31,8 @@
   <meta name="twitter:image" content="https://erindalechickenandseafood.com.au/Images/Logo/MetaBanner.jpg">
 
 
-  <link rel="icon" type="image/png" href="favicon/favicon.png">
-  <link rel="apple-touch-icon" href="favicon/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon/favicon.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="/favicon/favicon.png">
 
   <title>Erindale Chicken & Seafood</title>
   <link rel="preload" as="image" href="Images/Logo/LogoBG.jpg">
@@ -51,13 +51,14 @@
   <link rel="stylesheet" href="style.css">
   
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Erindale Chicken & Seafood",
-      "url": "https://erindalechickenandseafood.com.au"
-    }
-  </script>
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Erindale Chicken & Seafood",
+  "alternateName": "Erindale Chicken and Seafood",
+  "url": "https://erindalechickenandseafood.com.au/"
+}
+</script>
 
   <script type="application/ld+json">
     {
@@ -65,7 +66,12 @@
       "@type": ["LocalBusiness", "FoodEstablishment"],
       "name": "Erindale Chicken & Seafood",
       "url": "https://erindalechickenandseafood.com.au",
-      "logo": "https://erindalechickenandseafood.com.au/Images/Logo/LogoBG.jpg",
+      "logo": {
+        "@type": "ImageObject",
+        "url": ""https://erindalechickenandseafood.com.au/Images/Logo/LogoBG.jpg"",
+        "width": 4380,
+        "height": 4545
+}
       "image": "https://erindalechickenandseafood.com.au/Images/Logo/LogoBG.jpg",
       "telephone": "+61883322581",
       "priceRange": "$",
@@ -86,16 +92,10 @@
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"],
-          "opens": "10:30",
-          "closes": "20:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Saturday","Sunday"],
+          "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
           "opens": "11:00",
           "closes": "20:00"
-        }
+        },
       ],
       "sameAs": [
         "https://www.instagram.com/erindalechickenandseafood/",
@@ -209,8 +209,8 @@
                 <div class="contact-label">Trading Hours</div>
                 <div class="hours-grid">
                   <span class="hours-day">Mon</span><span class="hours-time">Closed</span>
-                  <span class="hours-day">Tue - Fri</span><span class="hours-time">10:30 am – 8:00 pm</span>
-                  <span class="hours-day">Sat - Sun</span><span class="hours-time">11:00 am – 8:00 pm</span>
+                  <span class="hours-day">Tue - Sun</span><span class="hours-time">11:00 am – 8:00 pm</span>
+                  <span class="hours-day">Public Holidays</span><span class="hours-time">Closed</span>
                 </div>
               </div>
             </div>
@@ -290,7 +290,7 @@
                 <div class="menu-card-name">Whole Chicken</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$20.90</div>
+                <div class="menu-card-price">$21.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -298,7 +298,7 @@
                 <div class="menu-card-name">Half Chicken</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$12.50</div>
+                <div class="menu-card-price">$12.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -306,7 +306,7 @@
                 <div class="menu-card-name">Quarter Chicken</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$7.20</div>
+                <div class="menu-card-price">$7.50</div>
               </div>
             </div>
           </div>
@@ -326,7 +326,7 @@
                 <div class="menu-card-name">Small Chips</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$7.50</div>
+                <div class="menu-card-price">$7.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -334,7 +334,7 @@
                 <div class="menu-card-name">Regular Chips</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$11.90</div>
+                <div class="menu-card-price">$12.50</div>
               </div>
             </div>
             <div class="menu-card">
@@ -342,7 +342,7 @@
                 <div class="menu-card-name">Large Chips</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$15.50</div>
+                <div class="menu-card-price">$15.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -350,7 +350,7 @@
                 <div class="menu-card-name">Jumbo Chips</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$18.90</div>
+                <div class="menu-card-price">$19.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -363,26 +363,26 @@
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">Gravy Small</div>
+                <div class="menu-card-name">Gravy or Peas Small</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$5.20</div>
+                <div class="menu-card-price">$5.50</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">Gravy Medium</div>
+                <div class="menu-card-name">Gravy or Peas Medium</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$7.90</div>
+                <div class="menu-card-price">$8.20</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">Gravy Large</div>
+                <div class="menu-card-name">Gravy or Peas Large</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$10.50</div>
+                <div class="menu-card-price">$10.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -390,7 +390,7 @@
                 <div class="menu-card-name">Chips &amp; Gravy (small)</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$11.90</div>
+                <div class="menu-card-price">$12.50</div>
               </div>
             </div>
             <div class="menu-card">
@@ -398,7 +398,7 @@
                 <div class="menu-card-name">Chips &amp; Gravy (regular)</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$15.90</div>
+                <div class="menu-card-price">$16.50</div>
               </div>
             </div>
           </div>
@@ -410,7 +410,7 @@
                 <div class="menu-card-name">¼ Chicken &amp; Chips</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$13.50</div>
+                <div class="menu-card-price">$13.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -418,7 +418,7 @@
                 <div class="menu-card-name">½ Chicken &amp; Chips</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$17.50</div>
+                <div class="menu-card-price">$17.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -426,7 +426,7 @@
                 <div class="menu-card-name">¼ Chicken, Chips &amp; Gravy</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$17.50</div>
+                <div class="menu-card-price">$17.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -434,7 +434,7 @@
                 <div class="menu-card-name">½ Chicken, Chips &amp; Gravy</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$20.50</div>
+                <div class="menu-card-price">$20.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -442,7 +442,7 @@
                 <div class="menu-card-name">6 Chicken Nuggets &amp; Chips</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$13.20</div>
+                <div class="menu-card-price">$13.50</div>
               </div>
             </div>
             <div class="menu-card">
@@ -459,47 +459,47 @@
           <div class="menu-category" id="cat-seafood">
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">Butterfish</div>
+                <div class="menu-card-name">Butterfish <span class="origin-badge" title="International">I</span></div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$7.20</div>
+                <div class="menu-card-price">$7.50</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">Garfish</div>
+                <div class="menu-card-name">Garfish <span class="origin-badge" title="International">I</span></div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$9.30</div>
+                <div class="menu-card-price">$9.50</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">Whiting</div>
+                <div class="menu-card-name">Whiting <span class="origin-badge" title="Australian">A</span></div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$12.90</div>
+                <div class="menu-card-price">$13.90</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">Calamari Rings (4)</div>
+                <div class="menu-card-name">Calamari Rings (4) <span class="origin-badge" title="International">I</span></div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$8.90</div>
+                <div class="menu-card-price">$9.90</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">Prawns (4)</div>
+                <div class="menu-card-name">Prawns (4) <span class="origin-badge" title="International">I</span></div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$10.90</div>
+                <div class="menu-card-price">$11.90</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">Seafood Sticks (each)</div>
+                <div class="menu-card-name">Seafood Sticks (each) <span class="origin-badge" title="International">I</span></div>
               </div>
               <div class="menu-card-right">
                 <div class="menu-card-price">$3.20</div>
@@ -511,23 +511,23 @@
           <div class="menu-category" id="cat-seafoodcombos">
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">1 Butterfish &amp; Chips</div>
+                <div class="menu-card-name">1 Butterfish &amp; Chips <span class="origin-badge" title="International">I</span></div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$13.50</div>
+                <div class="menu-card-price">$13.90</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">2 Butterfish &amp; Chips</div>
+                <div class="menu-card-name">2 Butterfish &amp; Chips <span class="origin-badge" title="International">I</span></div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$20.50</div>
+                <div class="menu-card-price">$20.90</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">3 Butterfish &amp; Regular Chips</div>
+                <div class="menu-card-name">3 Butterfish &amp; Regular Chips <span class="origin-badge" title="International">I</span></div>
               </div>
               <div class="menu-card-right">
                 <div class="menu-card-price">$31.90</div>
@@ -535,61 +535,61 @@
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">1 Garfish &amp; Chips</div>
+                <div class="menu-card-name">1 Garfish &amp; Chips <span class="origin-badge" title="International">I</span></div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$15.20</div>
+                <div class="menu-card-price">$15.50</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">2 Garfish &amp; Chips</div>
+                <div class="menu-card-name">2 Garfish &amp; Chips <span class="origin-badge" title="International">I</span></div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$24.40</div>
+                <div class="menu-card-price">$24.50</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">1 Whiting &amp; Chips</div>
+                <div class="menu-card-name">1 Whiting &amp; Chips <span class="origin-badge" title="Australian">A</span></div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$18.90</div>
+                <div class="menu-card-price">$19.90</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">2 Whiting &amp; Chips</div>
+                <div class="menu-card-name">2 Whiting &amp; Chips <span class="origin-badge" title="Australian">A</span></div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$31.50</div>
+                <div class="menu-card-price">$32.90</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">Calamari Pack</div>
+                <div class="menu-card-name">Calamari Pack <span class="origin-badge" title="International">I</span></div>
                 <div class="menu-card-desc">6 Calamari, Chips &amp; Tartare</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$19.50</div>
+                <div class="menu-card-price">$19.90</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">Prawn Pack</div>
+                <div class="menu-card-name">Prawn Pack <span class="origin-badge" title="International">I</span></div>
                 <div class="menu-card-desc">6 Prawns, Chips &amp; Tartare</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$20.50</div>
+                <div class="menu-card-price">$20.90</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">Seafood Pack</div>
+                <div class="menu-card-name">Seafood Pack <span class="origin-badge" title="International">I</span></div>
                 <div class="menu-card-desc">Fish, 2 Prawns, 2 Calamari, Chips &amp; Tartare</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$21.50</div>
+                <div class="menu-card-price">$21.90</div>
               </div>
             </div>
           </div>
@@ -603,7 +603,7 @@
                   Salads or 2 Salads &amp; Chips</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$17.90</div>
+                <div class="menu-card-price">$18.50</div>
               </div>
             </div>
             <div class="menu-card">
@@ -613,7 +613,7 @@
                   Salads or 2 Salads &amp; Chips</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$20.90</div>
+                <div class="menu-card-price">$21.50</div>
               </div>
             </div>
             <div class="menu-card">
@@ -622,7 +622,7 @@
                 <div class="menu-card-desc">Hot: with Chips, Peas &amp; Gravy · Cold: with choice of Salads</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$18.50</div>
+                <div class="menu-card-price">$18.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -631,7 +631,7 @@
                 <div class="menu-card-desc">Hot: with Chips, Peas &amp; Gravy · Cold: with choice of Salads</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$19.50</div>
+                <div class="menu-card-price">$19.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -640,7 +640,7 @@
                 <div class="menu-card-desc">Served with Tomato, BBQ, Chilli &amp; Garlic Sauce</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$18.50</div>
+                <div class="menu-card-price">$18.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -649,7 +649,16 @@
                 <div class="menu-card-desc">Served with Tomato, BBQ, Chilli &amp; Garlic Sauce</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$19.50</div>
+                <div class="menu-card-price">$19.90</div>
+              </div>
+            </div>
+            <div class="menu-card">
+              <div class="menu-card-info">
+                <div class="menu-card-name">Roast Chicken AB</div>
+                <div class="menu-card-desc">Served with Tomato, BBQ, Chilli & Garlic Sauce</div>
+              </div>
+              <div class="menu-card-right">
+                <div class="menu-card-price">$17.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -671,7 +680,7 @@
                 <div class="menu-card-desc">Includes Salad &amp; Sauce · $1 extra for Steak Burger</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$10.90</div>
+                <div class="menu-card-price">$11.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -680,7 +689,7 @@
                 <div class="menu-card-desc">Egg &amp; Onion</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$12.90</div>
+                <div class="menu-card-price">$13.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -689,7 +698,7 @@
                 <div class="menu-card-desc">Bacon &amp; Cheese</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$12.90</div>
+                <div class="menu-card-price">$13.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -698,7 +707,7 @@
                 <div class="menu-card-desc">Cheese, Egg &amp; Onion</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$13.90</div>
+                <div class="menu-card-price">$14.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -707,7 +716,7 @@
                 <div class="menu-card-desc">Cheese, Onion, Bacon &amp; Egg</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$14.90</div>
+                <div class="menu-card-price">$15.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -716,7 +725,7 @@
                 <div class="menu-card-desc">Cheese, Onion, Bacon, Egg &amp; Pineapple</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$15.90</div>
+                <div class="menu-card-price">$16.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -725,7 +734,7 @@
                 <div class="menu-card-desc">Lettuce &amp; Mayo</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$10.90</div>
+                <div class="menu-card-price">$11.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -734,7 +743,7 @@
                 <div class="menu-card-desc">Salad &amp; Sauce</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$11.50</div>
+                <div class="menu-card-price">$12.50</div>
               </div>
             </div>
             <div class="menu-card">
@@ -743,16 +752,16 @@
                 <div class="menu-card-desc">Salad &amp; Sauce</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$10.90</div>
+                <div class="menu-card-price">$11.90</div>
               </div>
             </div>
             <div class="menu-card">
               <div class="menu-card-info">
-                <div class="menu-card-name">Fish Fillet Burger</div>
+                <div class="menu-card-name">Fish Fillet Burger <span class="origin-badge" title="International">I</span></div>
                 <div class="menu-card-desc">Salad &amp; Tartare Sauce</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$10.90</div>
+                <div class="menu-card-price">$12.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -761,7 +770,7 @@
                 <div class="menu-card-desc">BBQ Sauce</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$11.90</div>
+                <div class="menu-card-price">$10.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -770,7 +779,7 @@
                 <div class="menu-card-desc">Sauce</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$8.40</div>
+                <div class="menu-card-price">$8.90</div>
               </div>
             </div>
             <div class="menu-card">
@@ -779,7 +788,7 @@
                 <div class="menu-card-desc">Cheese, Onion, Bacon, Sauce &amp; Mustard</div>
               </div>
               <div class="menu-card-right">
-                <div class="menu-card-price">$12.90</div>
+                <div class="menu-card-price">$13.40</div>
               </div>
             </div>
           </div>
@@ -793,7 +802,7 @@
                     <div class="menu-card-name">Small</div>
                   </div>
                   <div class="menu-card-right">
-                    <div class="menu-card-price">$6.50</div>
+                    <div class="menu-card-price">$6.90</div>
                   </div>
                 </div>
                 <div class="menu-card">
@@ -801,7 +810,7 @@
                     <div class="menu-card-name">Medium</div>
                   </div>
                   <div class="menu-card-right">
-                    <div class="menu-card-price">$9.50</div>
+                    <div class="menu-card-price">$9.90</div>
                   </div>
                 </div>
                 <div class="menu-card">
@@ -809,7 +818,7 @@
                     <div class="menu-card-name">Large</div>
                   </div>
                   <div class="menu-card-right">
-                    <div class="menu-card-price">$13.50</div>
+                    <div class="menu-card-price">$13.90</div>
                   </div>
                 </div>
               </div>
@@ -858,7 +867,7 @@
                 <div class="salads-col">
                   <div class="menu-card">
                     <div class="menu-card-info">
-                      <div class="menu-card-name">Seafood Salad</div>
+                      <div class="menu-card-name">Seafood Salad <span class="origin-badge" title="International">I</span></div>
                     </div>
                   </div>
                 </div>
