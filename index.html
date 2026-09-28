@@ -937,8 +937,9 @@
           </div>
 
         </div>
-        <p style="margin-top:1.5rem;font-size:12.5px;color:var(--grey-light);">* All chips are seasoned with chicken
-          salt unless specified otherwise. All fish are battered unless specified. Tartare Sauce is $1 extra. </p>
+        <p id="menu-note" class="menu-note">
+          Due to the continuous over demand of the wing quarters, we are not always able to provide our customers with wings in quarter chicken packs.
+        </p>
       </div>
     </section>
 
@@ -1152,16 +1153,43 @@
         displayImg.alt = data.title;
         label.innerHTML = '<span>' + data.sub + '</span>' + data.title;
       }
-    }
 
-    // Lunchtime note
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', function () {
-        const cat = this.getAttribute('onclick').match(/'([^']+)'/)[1];
-        const note = document.getElementById('lunch-note');
-        if (note) note.style.display = (cat === 'lunch') ? 'block' : 'none';
-      });
-    });
+      const menuNotes = {
+    chicken: "Due to the continuous over demand of the wing quarters, we are not always able to provide our customers with wings in quarter chicken packs.",
+
+    chips: "All chips are seasoned with chicken salt unless you specify otherwise.",
+
+    chickenandchips: "Due to the continuous over demand of the wing quarters, we are not always able to provide our customers with wings in quarter chicken packs.",
+
+    seafood: `
+        All fish are battered unless you specify otherwise.
+        <span class="origin-legend">
+            <span><span class="origin-badge">A</span> Australian</span>
+            <span><span class="origin-badge">I</span> International</span>
+            <span><span class="origin-badge">M</span> Mixed Origin</span>
+        </span>
+    `,
+
+    seafoodcombos: `
+        All fish are battered unless you specify otherwise. Tartare Sauce is $1 Extra
+        <span class="origin-legend">
+            <span><span class="origin-badge">A</span> Australian</span>
+            <span><span class="origin-badge">I</span> International</span>
+            <span><span class="origin-badge">M</span> Mixed Origin</span>
+        </span>
+    `,
+
+    packs: "",
+
+    burgers: "All burgers include salad & sauce.",
+
+    salads: "",
+
+    addons: ""
+};
+
+document.getElementById("menu-note").innerHTML = menuNotes[cat] || "";
+}
 
     function toggleMobileMenu() {
       const menu = document.getElementById('mobileMenu');
